@@ -1,0 +1,444 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression PLUS term
+Rule 2     expression -> expression MINUS term
+Rule 3     term -> factor MULTIPLY term
+Rule 4     term -> factor DIVIDE term
+Rule 5     factor -> base POWER factor
+Rule 6     expression -> term
+Rule 7     term -> factor
+Rule 8     factor -> base
+Rule 9     base -> identifier
+Rule 10    base -> DIGIT
+Rule 11    base -> real
+Rule 12    base -> LPAREN expression RPAREN
+Rule 13    identifier -> LETTER
+Rule 14    identifier -> DIGIT LETTER
+Rule 15    real -> DIGIT DOT DIGIT
+
+Terminals, with rules where they appear
+
+DIGIT                : 10 14 15 15
+DIVIDE               : 4
+DOT                  : 15
+LETTER               : 13 14
+LPAREN               : 12
+MINUS                : 2
+MULTIPLY             : 3
+PLUS                 : 1
+POWER                : 5
+RPAREN               : 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+base                 : 5 8
+expression           : 1 2 12 0
+factor               : 3 4 5 7
+identifier           : 9
+real                 : 11
+term                 : 1 2 3 4 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (6) expression -> . term
+    (3) term -> . factor MULTIPLY term
+    (4) term -> . factor DIVIDE term
+    (7) term -> . factor
+    (5) factor -> . base POWER factor
+    (8) factor -> . base
+    (9) base -> . identifier
+    (10) base -> . DIGIT
+    (11) base -> . real
+    (12) base -> . LPAREN expression RPAREN
+    (13) identifier -> . LETTER
+    (14) identifier -> . DIGIT LETTER
+    (15) real -> . DIGIT DOT DIGIT
+
+    DIGIT           shift and go to state 6
+    LPAREN          shift and go to state 8
+    LETTER          shift and go to state 9
+
+    expression                     shift and go to state 1
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+    base                           shift and go to state 4
+    identifier                     shift and go to state 5
+    real                           shift and go to state 7
+
+state 1
+
+    (0) S' -> expression .
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    PLUS            shift and go to state 10
+    MINUS           shift and go to state 11
+
+
+state 2
+
+    (6) expression -> term .
+
+    PLUS            reduce using rule 6 (expression -> term .)
+    MINUS           reduce using rule 6 (expression -> term .)
+    $end            reduce using rule 6 (expression -> term .)
+    RPAREN          reduce using rule 6 (expression -> term .)
+
+
+state 3
+
+    (3) term -> factor . MULTIPLY term
+    (4) term -> factor . DIVIDE term
+    (7) term -> factor .
+
+    MULTIPLY        shift and go to state 12
+    DIVIDE          shift and go to state 13
+    PLUS            reduce using rule 7 (term -> factor .)
+    MINUS           reduce using rule 7 (term -> factor .)
+    $end            reduce using rule 7 (term -> factor .)
+    RPAREN          reduce using rule 7 (term -> factor .)
+
+
+state 4
+
+    (5) factor -> base . POWER factor
+    (8) factor -> base .
+
+    POWER           shift and go to state 14
+    MULTIPLY        reduce using rule 8 (factor -> base .)
+    DIVIDE          reduce using rule 8 (factor -> base .)
+    PLUS            reduce using rule 8 (factor -> base .)
+    MINUS           reduce using rule 8 (factor -> base .)
+    $end            reduce using rule 8 (factor -> base .)
+    RPAREN          reduce using rule 8 (factor -> base .)
+
+
+state 5
+
+    (9) base -> identifier .
+
+    POWER           reduce using rule 9 (base -> identifier .)
+    MULTIPLY        reduce using rule 9 (base -> identifier .)
+    DIVIDE          reduce using rule 9 (base -> identifier .)
+    PLUS            reduce using rule 9 (base -> identifier .)
+    MINUS           reduce using rule 9 (base -> identifier .)
+    $end            reduce using rule 9 (base -> identifier .)
+    RPAREN          reduce using rule 9 (base -> identifier .)
+
+
+state 6
+
+    (10) base -> DIGIT .
+    (14) identifier -> DIGIT . LETTER
+    (15) real -> DIGIT . DOT DIGIT
+
+    POWER           reduce using rule 10 (base -> DIGIT .)
+    MULTIPLY        reduce using rule 10 (base -> DIGIT .)
+    DIVIDE          reduce using rule 10 (base -> DIGIT .)
+    PLUS            reduce using rule 10 (base -> DIGIT .)
+    MINUS           reduce using rule 10 (base -> DIGIT .)
+    $end            reduce using rule 10 (base -> DIGIT .)
+    RPAREN          reduce using rule 10 (base -> DIGIT .)
+    LETTER          shift and go to state 15
+    DOT             shift and go to state 16
+
+
+state 7
+
+    (11) base -> real .
+
+    POWER           reduce using rule 11 (base -> real .)
+    MULTIPLY        reduce using rule 11 (base -> real .)
+    DIVIDE          reduce using rule 11 (base -> real .)
+    PLUS            reduce using rule 11 (base -> real .)
+    MINUS           reduce using rule 11 (base -> real .)
+    $end            reduce using rule 11 (base -> real .)
+    RPAREN          reduce using rule 11 (base -> real .)
+
+
+state 8
+
+    (12) base -> LPAREN . expression RPAREN
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (6) expression -> . term
+    (3) term -> . factor MULTIPLY term
+    (4) term -> . factor DIVIDE term
+    (7) term -> . factor
+    (5) factor -> . base POWER factor
+    (8) factor -> . base
+    (9) base -> . identifier
+    (10) base -> . DIGIT
+    (11) base -> . real
+    (12) base -> . LPAREN expression RPAREN
+    (13) identifier -> . LETTER
+    (14) identifier -> . DIGIT LETTER
+    (15) real -> . DIGIT DOT DIGIT
+
+    DIGIT           shift and go to state 6
+    LPAREN          shift and go to state 8
+    LETTER          shift and go to state 9
+
+    expression                     shift and go to state 17
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+    base                           shift and go to state 4
+    identifier                     shift and go to state 5
+    real                           shift and go to state 7
+
+state 9
+
+    (13) identifier -> LETTER .
+
+    POWER           reduce using rule 13 (identifier -> LETTER .)
+    MULTIPLY        reduce using rule 13 (identifier -> LETTER .)
+    DIVIDE          reduce using rule 13 (identifier -> LETTER .)
+    PLUS            reduce using rule 13 (identifier -> LETTER .)
+    MINUS           reduce using rule 13 (identifier -> LETTER .)
+    $end            reduce using rule 13 (identifier -> LETTER .)
+    RPAREN          reduce using rule 13 (identifier -> LETTER .)
+
+
+state 10
+
+    (1) expression -> expression PLUS . term
+    (3) term -> . factor MULTIPLY term
+    (4) term -> . factor DIVIDE term
+    (7) term -> . factor
+    (5) factor -> . base POWER factor
+    (8) factor -> . base
+    (9) base -> . identifier
+    (10) base -> . DIGIT
+    (11) base -> . real
+    (12) base -> . LPAREN expression RPAREN
+    (13) identifier -> . LETTER
+    (14) identifier -> . DIGIT LETTER
+    (15) real -> . DIGIT DOT DIGIT
+
+    DIGIT           shift and go to state 6
+    LPAREN          shift and go to state 8
+    LETTER          shift and go to state 9
+
+    term                           shift and go to state 18
+    factor                         shift and go to state 3
+    base                           shift and go to state 4
+    identifier                     shift and go to state 5
+    real                           shift and go to state 7
+
+state 11
+
+    (2) expression -> expression MINUS . term
+    (3) term -> . factor MULTIPLY term
+    (4) term -> . factor DIVIDE term
+    (7) term -> . factor
+    (5) factor -> . base POWER factor
+    (8) factor -> . base
+    (9) base -> . identifier
+    (10) base -> . DIGIT
+    (11) base -> . real
+    (12) base -> . LPAREN expression RPAREN
+    (13) identifier -> . LETTER
+    (14) identifier -> . DIGIT LETTER
+    (15) real -> . DIGIT DOT DIGIT
+
+    DIGIT           shift and go to state 6
+    LPAREN          shift and go to state 8
+    LETTER          shift and go to state 9
+
+    term                           shift and go to state 19
+    factor                         shift and go to state 3
+    base                           shift and go to state 4
+    identifier                     shift and go to state 5
+    real                           shift and go to state 7
+
+state 12
+
+    (3) term -> factor MULTIPLY . term
+    (3) term -> . factor MULTIPLY term
+    (4) term -> . factor DIVIDE term
+    (7) term -> . factor
+    (5) factor -> . base POWER factor
+    (8) factor -> . base
+    (9) base -> . identifier
+    (10) base -> . DIGIT
+    (11) base -> . real
+    (12) base -> . LPAREN expression RPAREN
+    (13) identifier -> . LETTER
+    (14) identifier -> . DIGIT LETTER
+    (15) real -> . DIGIT DOT DIGIT
+
+    DIGIT           shift and go to state 6
+    LPAREN          shift and go to state 8
+    LETTER          shift and go to state 9
+
+    factor                         shift and go to state 3
+    term                           shift and go to state 20
+    base                           shift and go to state 4
+    identifier                     shift and go to state 5
+    real                           shift and go to state 7
+
+state 13
+
+    (4) term -> factor DIVIDE . term
+    (3) term -> . factor MULTIPLY term
+    (4) term -> . factor DIVIDE term
+    (7) term -> . factor
+    (5) factor -> . base POWER factor
+    (8) factor -> . base
+    (9) base -> . identifier
+    (10) base -> . DIGIT
+    (11) base -> . real
+    (12) base -> . LPAREN expression RPAREN
+    (13) identifier -> . LETTER
+    (14) identifier -> . DIGIT LETTER
+    (15) real -> . DIGIT DOT DIGIT
+
+    DIGIT           shift and go to state 6
+    LPAREN          shift and go to state 8
+    LETTER          shift and go to state 9
+
+    factor                         shift and go to state 3
+    term                           shift and go to state 21
+    base                           shift and go to state 4
+    identifier                     shift and go to state 5
+    real                           shift and go to state 7
+
+state 14
+
+    (5) factor -> base POWER . factor
+    (5) factor -> . base POWER factor
+    (8) factor -> . base
+    (9) base -> . identifier
+    (10) base -> . DIGIT
+    (11) base -> . real
+    (12) base -> . LPAREN expression RPAREN
+    (13) identifier -> . LETTER
+    (14) identifier -> . DIGIT LETTER
+    (15) real -> . DIGIT DOT DIGIT
+
+    DIGIT           shift and go to state 6
+    LPAREN          shift and go to state 8
+    LETTER          shift and go to state 9
+
+    base                           shift and go to state 4
+    factor                         shift and go to state 22
+    identifier                     shift and go to state 5
+    real                           shift and go to state 7
+
+state 15
+
+    (14) identifier -> DIGIT LETTER .
+
+    POWER           reduce using rule 14 (identifier -> DIGIT LETTER .)
+    MULTIPLY        reduce using rule 14 (identifier -> DIGIT LETTER .)
+    DIVIDE          reduce using rule 14 (identifier -> DIGIT LETTER .)
+    PLUS            reduce using rule 14 (identifier -> DIGIT LETTER .)
+    MINUS           reduce using rule 14 (identifier -> DIGIT LETTER .)
+    $end            reduce using rule 14 (identifier -> DIGIT LETTER .)
+    RPAREN          reduce using rule 14 (identifier -> DIGIT LETTER .)
+
+
+state 16
+
+    (15) real -> DIGIT DOT . DIGIT
+
+    DIGIT           shift and go to state 23
+
+
+state 17
+
+    (12) base -> LPAREN expression . RPAREN
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 24
+    PLUS            shift and go to state 10
+    MINUS           shift and go to state 11
+
+
+state 18
+
+    (1) expression -> expression PLUS term .
+
+    PLUS            reduce using rule 1 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 1 (expression -> expression PLUS term .)
+    $end            reduce using rule 1 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 1 (expression -> expression PLUS term .)
+
+
+state 19
+
+    (2) expression -> expression MINUS term .
+
+    PLUS            reduce using rule 2 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 2 (expression -> expression MINUS term .)
+    $end            reduce using rule 2 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 2 (expression -> expression MINUS term .)
+
+
+state 20
+
+    (3) term -> factor MULTIPLY term .
+
+    PLUS            reduce using rule 3 (term -> factor MULTIPLY term .)
+    MINUS           reduce using rule 3 (term -> factor MULTIPLY term .)
+    $end            reduce using rule 3 (term -> factor MULTIPLY term .)
+    RPAREN          reduce using rule 3 (term -> factor MULTIPLY term .)
+
+
+state 21
+
+    (4) term -> factor DIVIDE term .
+
+    PLUS            reduce using rule 4 (term -> factor DIVIDE term .)
+    MINUS           reduce using rule 4 (term -> factor DIVIDE term .)
+    $end            reduce using rule 4 (term -> factor DIVIDE term .)
+    RPAREN          reduce using rule 4 (term -> factor DIVIDE term .)
+
+
+state 22
+
+    (5) factor -> base POWER factor .
+
+    MULTIPLY        reduce using rule 5 (factor -> base POWER factor .)
+    DIVIDE          reduce using rule 5 (factor -> base POWER factor .)
+    PLUS            reduce using rule 5 (factor -> base POWER factor .)
+    MINUS           reduce using rule 5 (factor -> base POWER factor .)
+    $end            reduce using rule 5 (factor -> base POWER factor .)
+    RPAREN          reduce using rule 5 (factor -> base POWER factor .)
+
+
+state 23
+
+    (15) real -> DIGIT DOT DIGIT .
+
+    POWER           reduce using rule 15 (real -> DIGIT DOT DIGIT .)
+    MULTIPLY        reduce using rule 15 (real -> DIGIT DOT DIGIT .)
+    DIVIDE          reduce using rule 15 (real -> DIGIT DOT DIGIT .)
+    PLUS            reduce using rule 15 (real -> DIGIT DOT DIGIT .)
+    MINUS           reduce using rule 15 (real -> DIGIT DOT DIGIT .)
+    $end            reduce using rule 15 (real -> DIGIT DOT DIGIT .)
+    RPAREN          reduce using rule 15 (real -> DIGIT DOT DIGIT .)
+
+
+state 24
+
+    (12) base -> LPAREN expression RPAREN .
+
+    POWER           reduce using rule 12 (base -> LPAREN expression RPAREN .)
+    MULTIPLY        reduce using rule 12 (base -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 12 (base -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 12 (base -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 12 (base -> LPAREN expression RPAREN .)
+    $end            reduce using rule 12 (base -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 12 (base -> LPAREN expression RPAREN .)
+

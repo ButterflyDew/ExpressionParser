@@ -5,6 +5,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtSql import *
 from PyQt5.Qt import *
 from expressionParser.SyA import SyA
+import shutil
 
 class ErrorDialog(QDialog):
     def __init__(self, parent=None):
@@ -70,4 +71,6 @@ class SyntaxAnalysis(QWidget):
             pixmap = pixmap.scaled(800,750,Qt.AspectRatioMode.KeepAspectRatio, Qt.SmoothTransformation)
             self.scene.addPixmap(pixmap)
             #print("OK")
+
+
 

@@ -1,69 +1,57 @@
 digraph {
-	1 [label="expression:(114+x)^a/2*x"]
-	2 [label="term:(114+x)^a/2*x"]
-	3 [label="factor:(114+x)^a"]
-	4 [label="base:(114+x)"]
+	1 [label="expression:(x+2)^2/y"]
+	2 [label="term:(x+2)^2/y"]
+	3 [label="factor:(x+2)^2"]
+	4 [label="base:(x+2)"]
 	5 [label="LPAREN:("]
 	4 -> 5
-	6 [label="expression:114+x"]
-	7 [label="expression:114"]
-	8 [label="term:114"]
-	9 [label="factor:114"]
-	10 [label="base:114"]
-	11 [label="DIGIT:114"]
+	6 [label="expression:x+2"]
+	7 [label="expression:x"]
+	8 [label="term:x"]
+	9 [label="factor:x"]
+	10 [label="base:x"]
+	11 [label="identifier:x"]
+	12 [label="LETTER:x"]
+	11 -> 12
 	10 -> 11
 	9 -> 10
 	8 -> 9
 	7 -> 8
 	6 -> 7
-	12 [label="PLUS:+"]
-	6 -> 12
-	13 [label="term:x"]
-	14 [label="factor:x"]
-	15 [label="base:x"]
-	16 [label="identifier:x"]
-	17 [label="LETTER:x"]
+	13 [label="PLUS:+"]
+	6 -> 13
+	14 [label="term:2"]
+	15 [label="factor:2"]
+	16 [label="base:2"]
+	17 [label="DIGIT:2"]
 	16 -> 17
 	15 -> 16
 	14 -> 15
-	13 -> 14
-	6 -> 13
+	6 -> 14
 	4 -> 6
 	18 [label="RPAREN:)"]
 	4 -> 18
 	3 -> 4
 	19 [label="POWER:^"]
 	3 -> 19
-	20 [label="factor:a"]
-	21 [label="base:a"]
-	22 [label="identifier:a"]
-	23 [label="LETTER:a"]
-	22 -> 23
+	20 [label="factor:2"]
+	21 [label="base:2"]
+	22 [label="DIGIT:2"]
 	21 -> 22
 	20 -> 21
 	3 -> 20
 	2 -> 3
-	24 [label="DIVIDE:/"]
-	2 -> 24
-	25 [label="term:2*x"]
-	26 [label="factor:2"]
-	27 [label="base:2"]
-	28 [label="DIGIT:2"]
+	23 [label="DIVIDE:/"]
+	2 -> 23
+	24 [label="term:y"]
+	25 [label="factor:y"]
+	26 [label="base:y"]
+	27 [label="identifier:y"]
+	28 [label="LETTER:y"]
 	27 -> 28
 	26 -> 27
 	25 -> 26
-	29 [label="MULTIPLY:*"]
-	25 -> 29
-	30 [label="term:x"]
-	31 [label="factor:x"]
-	32 [label="base:x"]
-	33 [label="identifier:x"]
-	34 [label="LETTER:x"]
-	33 -> 34
-	32 -> 33
-	31 -> 32
-	30 -> 31
-	25 -> 30
-	2 -> 25
+	24 -> 25
+	2 -> 24
 	1 -> 2
 }

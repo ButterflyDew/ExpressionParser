@@ -6,6 +6,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtSql import *
 from PyQt5.Qt import *
 from expressionParser.SeA import SeA
+import shutil
+import os
 
 class ErrorDialog(QDialog):
     def __init__(self, parent=None):
@@ -182,5 +184,15 @@ class SemanticAnalysis(QWidget):
             # self.vbox.addWidget(self.gird)
             #print(token)
             #print("res:"+str(SeAma.getres()))
-            
+            # 获取当前工作目录
+            current_dir = os.getcwd()
+
+            src_file = "expressionParser/parser.out"
+            dest_file = "OutFile/parser.out"
+
+            #构建源文件和目标文件的完整路径
+            src_path = os.path.join(current_dir, src_file)
+            dest_path = os.path.join(current_dir, dest_file)
+
+            shutil.move(src_path, dest_path)
 

@@ -4,6 +4,7 @@ from PyQt5.QtCore import  *
 from PyQt5.QtGui import  *
 from PyQt5.QtSql import *
 from PyQt5.Qt import *
+import os
 from mainpage import mainpage
 from LApage import LexicalAnalysis
 from SyApage import SyntaxAnalysis
@@ -16,6 +17,12 @@ class WindowClass(QWidget):
         self.Window_Title="实习文法设计"
         self.setWindowTitle(self.Window_Title)
         self.resize(1000,600)
+
+
+        file_path = "expressionParser/parsetab.py"
+
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
         logo = QLabel()
         pixmap = QPixmap('logo.png') 
