@@ -44,7 +44,7 @@ class WindowClass(QWidget):
         btn3.clicked.connect(self.tranSya)
         btn3.setFixedSize(300, 45)
 
-        btn4 = QPushButton("语意分析")
+        btn4 = QPushButton("语义分析")
         btn4.clicked.connect(self.tranSea)
         btn4.setFixedSize(300, 45)
 
@@ -61,6 +61,7 @@ class WindowClass(QWidget):
         leftv.addWidget(btn4)
         leftv.addWidget(btn5)
 
+        #设置大小
         rr,cc = 800,600
         self.rigv = QVBoxLayout()
         self.page1 = mainpage()
@@ -83,6 +84,8 @@ class WindowClass(QWidget):
 
         self.setLayout(self.mainwindow)
         self.show()
+
+    # 删除控件
     def delwget(self):
         for i in range(self.rigv.count()):
             item = self.rigv.itemAt(i)
@@ -90,6 +93,7 @@ class WindowClass(QWidget):
             self.rigv.removeWidget(wget)
             wget.setVisible(False)
 
+    # 页面转换
     def tranmp(self):
         self.delwget()
         self.page1.setVisible(True)

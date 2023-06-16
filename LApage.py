@@ -8,7 +8,33 @@ from PyQt5.QtSql import *
 from PyQt5.Qt import *
 from FileUploadWidget import FileUploadWidget
 from expressionParser.lexicalParser import lexicalParser
+# 词法分析页面
 
+# 存在此法分析错误
+class ErrorDialog(QDialog):
+    def __init__(self, errlist, parent = None):
+        super().__init__(parent)
+        self.setWindowTitle("错误")
+        self.setModal(True)
+        
+        # 设置窗口内容
+        errtext = "Exist Illegal character:"
+        for x in errlist:
+            errtext += x
+        self.label = QLabel(errtext, self)
+
+        
+        # 添加确定按钮
+        self.button = QPushButton("确定", self)
+        self.button.clicked.connect(self.accept)
+        
+        # 设置布局
+        layout = QVBoxLayout()
+        layout.addWidget(self.label)
+        layout.addWidget(self.button)
+        self.setLayout(layout)
+
+# 词法分析界面类
 class LexicalAnalysis(QWidget):
     def __init__(self):    
         super().__init__()
@@ -51,6 +77,7 @@ class LexicalAnalysis(QWidget):
         self.setLayout(self.vbox)
         self.show()
 
+    # 确认按钮事件
     def confirm(self):
         self.path = self.FUW.path
         #print(self.path)
@@ -60,7 +87,11 @@ class LexicalAnalysis(QWidget):
             f.close()
         LA = lexicalParser()
         self.data = []
-        lextok= LA.parser(s)
+        lextok, errlist= LA.parser(s)
+        if len(errlist) != 0:
+            error_dialog = ErrorDialog(errlist)
+            error_dialog.exec_()
+            return
         for x in lextok:
             self.data.append((x.type,x.value,x.lexpos))
         print(self.data)

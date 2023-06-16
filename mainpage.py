@@ -5,6 +5,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtSql import *
 from PyQt5.Qt import *
 
+#首页
 class mainpage(QWidget):
     def __init__(self):    
         super().__init__()

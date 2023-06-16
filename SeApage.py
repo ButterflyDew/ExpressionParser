@@ -8,7 +8,7 @@ from PyQt5.Qt import *
 from expressionParser.SeA import SeA
 import shutil
 import os
-
+# 未进行语法分析窗口
 class ErrorDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -28,6 +28,7 @@ class ErrorDialog(QDialog):
         layout.addWidget(self.button)
         self.setLayout(layout)
 
+# 输入未知数窗口
 class InputDialog(QDialog):
     def __init__(self, varlist, valuelist, expression):
         super().__init__()
@@ -77,6 +78,7 @@ class InputDialog(QDialog):
         #print("Submitted values:", values)
         self.accept()
 
+# 获取表达式
 def getex(path):
     ex = ''
     with open(path, 'r') as f:
@@ -84,6 +86,7 @@ def getex(path):
         f.close()
     return ex
 
+# 语义分析界面类
 class SemanticAnalysis(QWidget):
     def __init__(self, p):    
         super().__init__()
@@ -123,6 +126,7 @@ class SemanticAnalysis(QWidget):
         self.setLayout(self.vbox)
         self.show()
 
+    # 确认按钮事件
     def sta_btn(self):
         if self.par.page3.iscof == False:
             #show_error_dialog()
