@@ -1,8 +1,10 @@
+# 为未知数赋值
 class letterVals:
     def __init__(self) -> None:
         self.map = {}
         for i in range(0,26):
-            self.map[chr(ord('a')+i)]=1
+            self.map[chr(ord('a')+i)]=1 # 若未输入则默认值为1
+    
     def modify(self, letter, val):
         self.map[letter] = val
 
