@@ -1,3 +1,4 @@
+# 获取表达式中的未知数列表
 class getLetterList:
     def __init__(self) -> None:
         pass
